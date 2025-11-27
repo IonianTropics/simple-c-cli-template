@@ -17,7 +17,7 @@ bool example(FILE *input)
         putchar(c);
     }
     if (ferror(input)) {
-        fputs(stderr, "error while reading from file\n");
+        fputs("error while reading from file\n", stderr);
         return false;
     }
     return true;

@@ -17,7 +17,7 @@ EXEC := example
 # CPP := $(CC) -E
 
 # ASFLAGS := 
-CFLAGS := -g -Og -Wall -Werror
+CFLAGS := -g3 -Og -Wall -Werror
 # CXXFLAGS := 
 # CPPFLAGS := 
 # LDFLAGS := 
