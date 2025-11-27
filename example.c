@@ -10,14 +10,14 @@
 #include <stdio.h>
 
 
-bool example(FILE *input, char *path)
+bool example(FILE *input)
 {
     int c;
     while ((c = fgetc(input)) != EOF) {
         putchar(c);
     }
     if (ferror(input)) {
-        fprintf(stderr, "error while reading from %s\n", path);
+        fputs(stderr, "error while reading from file\n");
         return false;
     }
     return true;
@@ -26,7 +26,7 @@ bool example(FILE *input, char *path)
 bool handle_option(char *option)
 {
     if (strncmp(option, "-", 2) == 0) {
-        return example(stdin, "stdin");
+        return example(stdin);
     }
     return true;
 }
@@ -41,7 +41,7 @@ bool handle_arg(char *arg)
         perror(arg);
         return false;
     }
-    bool result = example(file, arg);
+    bool result = example(file);
     fclose(file);
     return result;
 }
@@ -49,7 +49,7 @@ bool handle_arg(char *arg)
 int main(int argc, char **argv)
 {
     if (argc < 2) {
-        return example(stdin, "stdin") ? EXIT_SUCCESS : EXIT_FAILURE;
+        return example(stdin) ? EXIT_SUCCESS : EXIT_FAILURE;
     }
     for (size_t i = 1; i < argc; i++) {
         if (!handle_arg(argv[i])) {

@@ -14,6 +14,11 @@ Your project can use whatever license you'd like. After setup head over to https
 
 ## Setup
 
-run `./setup.sh project-name "Your Name"` with your actual project name and Your Name
+Replacing your project name and real name, run
 
-After setup, feel free to remove the script with `rm setup.sh`
+```bash
+sed -i -e "s/example/$1/g" README.md example.c Makefile .gitignore
+```
+```bash
+sed -i -e "s/Your Name/$2/g" README.md example.c Makefile
+```
